@@ -5,10 +5,22 @@ import { StatusBar } from 'expo-status-bar';
 import Launch from './src/components/Launch';
 import Welcome from './src/components/Welcome';
 import Onboarding from './src/components/Onboarding';
+import Login from './src/components/Login';
+import SignUp from './src/components/SignUp';
+import ForgotPassword from './src/components/Forgotpassword';
+import SetPassword from './src/components/Setpassword';
 import { colors } from './src/theme';
 
 // Бет түрлері. Жаңа бет қосқанда осында атын қосамыз.
-type Page = 'launch' | 'welcome' | 'onboarding' | 'login' | 'signup';
+type Page =
+  | 'launch'
+  | 'welcome'
+  | 'onboarding'
+  | 'login'
+  | 'signup'
+  | 'forgot'
+  | 'setPassword'
+  | 'home';
 
 export default function App() {
   const [page, setPage] = useState<Page>('launch');
@@ -38,7 +50,43 @@ export default function App() {
     case 'onboarding':
       return <Onboarding onFinish={() => setPage(afterOnboarding)} />;
 
-    // Login және Sign Up беттері дайын болғанша уақытша экран
+    case 'login':
+      return (
+        <Login
+          onBack={() => setPage('welcome')}
+          onLogin={() => setPage('home')}
+          onSignUp={() => setPage('signup')}
+          onForgotPassword={() => setPage('forgot')}
+        />
+      );
+
+    case 'signup':
+      return (
+        <SignUp
+          onBack={() => setPage('welcome')}
+          onSignUp={() => setPage('home')}
+          onLogin={() => setPage('login')}
+        />
+      );
+
+    // Құпия сөзді қалпына келтіру: Login -> forgot -> setPassword -> Login
+    case 'forgot':
+      return (
+        <ForgotPassword
+          onBack={() => setPage('login')}
+          onNext={() => setPage('setPassword')}
+        />
+      );
+
+    case 'setPassword':
+      return (
+        <SetPassword
+          onBack={() => setPage('forgot')}
+          onReset={() => setPage('login')}
+        />
+      );
+
+    // Басты бет дайын болғанша уақытша экран
     default:
       return (
         <View style={styles.temp}>
