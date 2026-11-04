@@ -7,8 +7,9 @@ import Welcome from './src/components/Welcome';
 import Onboarding from './src/components/Onboarding';
 import Login from './src/components/Login';
 import SignUp from './src/components/SignUp';
-import ForgotPassword from './src/components/Forgotpassword';
-import SetPassword from './src/components/Setpassword';
+import ForgotPassword from './src/components/ForgotPassword';
+import SetPassword from './src/components/SetPassword';
+import Home from './src/components/Home';
 import { colors } from './src/theme';
 
 // Бет түрлері. Жаңа бет қосқанда осында атын қосамыз.
@@ -86,7 +87,10 @@ export default function App() {
         />
       );
 
-    // Басты бет дайын болғанша уақытша экран
+    case 'home':
+      return <Home />;
+
+    // Белгісіз бет болса уақытша экран
     default:
       return (
         <View style={styles.temp}>
