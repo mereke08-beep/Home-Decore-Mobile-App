@@ -10,6 +10,7 @@ import SignUp from './src/components/SignUp';
 import ForgotPassword from './src/components/ForgotPassword';
 import SetPassword from './src/components/SetPassword';
 import Home from './src/components/Home';
+import Search from './src/components/Search';
 import { colors } from './src/theme';
 
 // Бет түрлері. Жаңа бет қосқанда осында атын қосамыз.
@@ -21,7 +22,8 @@ type Page =
   | 'signup'
   | 'forgot'
   | 'setPassword'
-  | 'home';
+  | 'home'
+  | 'search';
 
 export default function App() {
   const [page, setPage] = useState<Page>('launch');
@@ -88,7 +90,10 @@ export default function App() {
       );
 
     case 'home':
-      return <Home />;
+      return <Home onSearch={() => setPage('search')} />;
+
+    case 'search':
+      return <Search onBack={() => setPage('home')} />;
 
     // Белгісіз бет болса уақытша экран
     default:

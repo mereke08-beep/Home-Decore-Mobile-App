@@ -11,7 +11,11 @@ const bestSellerImage = require('../../assets/images/best-seller.png'); // 393x2
 const newCollectionImage = require('../../assets/images/new-collection.png'); // 393x303
 const tabBarImage = require('../../assets/images/tab-bar.png'); // 393x58
 
-export default function Home() {
+type Props = {
+  onSearch: () => void; // лупа басылғанда Search бетіне өту
+};
+
+export default function Home({ onSearch }: Props) {
   return (
     <View style={styles.container}>
       <StatusBar style="dark" />
@@ -27,7 +31,7 @@ export default function Home() {
           {/* Лупа батырмасы суреттің үстінде көрінбейтін басылатын аймақ */}
           <Pressable
             style={styles.searchArea}
-            onPress={() => console.log('Іздеу басылды')}
+            onPress={onSearch}
           />
         </View>
 
