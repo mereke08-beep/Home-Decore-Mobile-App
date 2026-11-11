@@ -13,6 +13,7 @@ import {
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../theme';
+import Filter from './Filter';
 
 const tabBarImage = require('../../assets/tab-bar.png'); // 393x58
 
@@ -32,6 +33,7 @@ const topSearches = [
 
 export default function Search({ onBack }: Props) {
   const [query, setQuery] = useState('');
+  const [filterVisible, setFilterVisible] = useState(false); // фильтр ашық/жабық
 
   return (
     <View style={styles.container}>
@@ -64,7 +66,7 @@ export default function Search({ onBack }: Props) {
 
           <Pressable
             style={styles.filterButton}
-            onPress={() => console.log('Фильтр басылды')}
+            onPress={() => setFilterVisible(true)}
           >
             <Ionicons name="options-outline" size={16} color={colors.text} />
           </Pressable>
@@ -105,6 +107,13 @@ export default function Search({ onBack }: Props) {
           ))}
         </View>
       </View>
+
+      {/* Фильтр терезесі */}
+      <Filter
+        visible={filterVisible}
+        onClose={() => setFilterVisible(false)}
+        onApply={(filters) => console.log('Фильтр:', filters)}
+      />
     </View>
   );
 }
