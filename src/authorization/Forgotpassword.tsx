@@ -48,7 +48,7 @@ export default function ForgotPassword({ onBack, onNext }: Props) {
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
-          background-Color={colors.white}
+          backgroundColor={colors.white}
         />
 
         <Pressable style={styles.button} onPress={handleNext}>
