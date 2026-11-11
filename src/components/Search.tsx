@@ -14,7 +14,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../theme';
 
-const tabBarImage = require('../../assets/images/tab-bar.png'); // 393x58
+const tabBarImage = require('../../assets/tab-bar.png'); // 393x58
 
 type Props = {
   onBack: () => void; // стрелка немесе Home иконкасы басылғанда Home-ға қайту
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   tabRow: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     flexDirection: 'row',
     paddingHorizontal: '9%',
   },

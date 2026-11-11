@@ -6,10 +6,10 @@ import { StatusBar } from 'expo-status-bar';
 import { colors } from '../theme';
 
 // Figma-дан экспортталған төрт сурет (assets/images/ папкасында тұруы керек)
-const headerImage = require('../../assets/images/header.png'); // 393x373: Hi Welcome Back + баннер + Categories
-const bestSellerImage = require('../../assets/images/best-seller.png'); // 393x207
-const newCollectionImage = require('../../assets/images/new-collection.png'); // 393x303
-const tabBarImage = require('../../assets/images/tab-bar.png'); // 393x58
+const headerImage = require('../../assets/header.png'); // 393x373: Hi Welcome Back + баннер + Categories
+const bestSellerImage = require('../../assets/best-seller.png'); // 393x207
+const newCollectionImage = require('../../assets/new-collection.png'); // 393x303
+const tabBarImage = require('../../assets/tab-bar.png'); // 393x58
 
 type Props = {
   onSearch: () => void; // лупа басылғанда Search бетіне өту
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   tabRow: {
-    ...StyleSheet.absoluteFillObject,
+    ...StyleSheet.absoluteFill,
     flexDirection: 'row',
     paddingHorizontal: '9%',
   },
